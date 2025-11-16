@@ -1,59 +1,93 @@
-import { ExternalLink } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+
+const portfolioItems = [
+  {
+    title: 'Lirante',
+    category: 'Landing Page',
+    image: '/lirante.jpg',
+  },
+  {
+    title: 'Lirante',
+    category: 'Product Design',
+    image: '/lirante2.jpg',
+  },
+];
+
+const categories = ['Landing Page', 'Product Design', 'Animation', 'Glassmorphism', 'Cards'];
 
 export default function Portfolio() {
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50" id="portfolio">
+    <section className="py-24 bg-white" id="portfolio">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Let's have a look at my Portfolio
-          </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+        <div className="flex justify-between items-center mb-16">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+              Lets have a look at
+            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              my <span className="text-orange-500">Portfolio</span>
+            </h2>
+          </div>
+          <button className="px-6 py-3 bg-orange-500 text-white rounded-full font-medium hover:bg-orange-600 transition-all">
+            See All
+          </button>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-12 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuMSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
-                <div className="relative z-10 text-center">
-                  <div className="w-32 h-32 mx-auto mb-6 bg-white/20 backdrop-blur-lg rounded-3xl flex items-center justify-center border border-white/30 shadow-2xl">
-                    <ExternalLink className="w-16 h-16 text-white" />
-                  </div>
-                  <div className="text-white text-6xl font-bold opacity-90">Lirante</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          {portfolioItems.map((item, index) => (
+            <div
+              key={index}
+              className="group relative bg-gray-100 rounded-3xl overflow-hidden aspect-[4/5] hover:shadow-2xl transition-all duration-500"
+            >
+              {/* Portfolio Image Placeholder */}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-200">
+                <div className="absolute bottom-0 left-0 right-0 h-3/4 bg-gradient-to-b from-transparent to-white/90"></div>
+              </div>
+
+              {/* Title Overlay */}
+              <div className="absolute bottom-8 left-8 right-8">
+                <h3 className="text-6xl font-bold text-gray-900 mb-4">
+                  {item.title}
+                </h3>
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 bg-orange-500 rounded-full"></span>
+                  <span className="text-gray-600">{item.category}</span>
                 </div>
               </div>
 
-              <div className="p-12">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                  Lirante
-                </h3>
-                <p className="text-xl text-blue-600 font-semibold mb-6">
-                  Food Delivery Solution
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {['Landing Page', 'Product Design', 'Animation', 'Glassmorphism', 'Cards'].map((tag, index) => (
-                    <span
-                      key={index}
-                      className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors duration-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+              {/* Arrow Button */}
+              <div className="absolute bottom-8 right-8">
+                <div className="w-14 h-14 bg-gray-900 rounded-full flex items-center justify-center group-hover:bg-orange-500 transition-all duration-300">
+                  <ArrowUpRight className="w-7 h-7 text-white" />
                 </div>
-
-                <p className="text-gray-600 leading-relaxed mb-8">
-                  A comprehensive food delivery platform designed with modern glassmorphism aesthetics and smooth animations. The solution provides an intuitive user experience with seamless ordering flow, real-time tracking, and engaging visual design that makes food ordering delightful.
-                </p>
-
-                <button className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
-                  View Project
-                  <ExternalLink className="w-4 h-4" />
-                </button>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
+
+        {/* Categories */}
+        <div className="flex flex-wrap gap-3 justify-center">
+          {categories.map((category, index) => (
+            <span
+              key={index}
+              className="px-6 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-orange-500 hover:text-white transition-all duration-300 cursor-pointer"
+            >
+              {category}
+            </span>
+          ))}
+        </div>
+
+        {/* Featured Project */}
+        <div className="mt-16 text-center">
+          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
+            Lirante - Food Delivery Solution
+            <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+              <ArrowUpRight className="w-6 h-6 text-white" />
+            </div>
+          </h3>
+          <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis orci elementum egestas lobortis.
+          </p>
         </div>
       </div>
     </section>
